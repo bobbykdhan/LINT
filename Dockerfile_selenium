@@ -1,0 +1,10 @@
+FROM selenium/standalone-chrome
+
+# TODO Change to super secure password
+ENV SE_VNC_PASSWORD=secret
+
+EXPOSE 4444
+EXPOSE 7900
+ENV JAVA_OPTS='-Xmx4000M'
+ENV SE_NODE_SESSION_TIMEOUT=30
+ENV SE_NODE_OVERRIDE_MAX_SESSIONS=true
