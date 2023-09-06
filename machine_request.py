@@ -23,7 +23,7 @@ def main():
     return driver
 
 
-def make_request(driver, name, building, washer_number, issue):
+def make_request(driver, building, roomNumber, machineType, machineNumber, problemDetail):
     driver.get("https://mylife.rit.edu")
     wait = WebDriverWait(driver, 150, poll_frequency=1)
     wait.until(ec.visibility_of_element_located((By.CLASS_NAME, "ui-btn-external-provider")))
@@ -45,7 +45,7 @@ def make_request(driver, name, building, washer_number, issue):
     category_select.select_by_visible_text("LAUNDRY ROOM")
     time.sleep(1)
     item_select.select_by_visible_text("washer")
-    description.send_keys("Washer #" + washer_number + " in " + building + " is " + issue + ". \n My name is " + name + ".")
+    description.send_keys(building + " Laundry (" + roomNumber + ") " + machineType + " " + machineNumber + ": " + problemDetail)
     input("Press Enter to continue...")
     input("Press Enter to continue...")
     input("Press Enter to continue...")
@@ -53,4 +53,4 @@ def make_request(driver, name, building, washer_number, issue):
 
 if __name__ == '__main__':
     driver = main()
-    make_request(driver, "John Doe", "Sol Heumann", "1", "broken")
+    make_request(driver, "Gleason", "35-A079", "Washer", "17", "It seems that this machine is not receiving power")
