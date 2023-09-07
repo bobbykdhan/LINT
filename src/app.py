@@ -12,7 +12,8 @@ async def ticket():
 
         if building in validBuildingNames:
             if int(machineNum) < 40:
-                machine_request.make_request()
+                report_info = ReportInfo(building, "_", "Washer", machineNum, "_")
+                machine_request.api_request(report_info)
 
         return render_template("ticket.html", building=building, machineNum=machineNum)
     else:
