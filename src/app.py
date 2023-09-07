@@ -26,5 +26,16 @@ async def ticket():
         except ValueError as value_err:
             return str(value_err), 400
 
+
+
+
+@app.route('/debug/<path:url_param>')
+def get_url(url_param):
+    
+    return f'The URL parameter is: {url_param}'
+
+
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
