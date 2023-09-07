@@ -3,6 +3,8 @@
 import time
 import json
 import random
+from dataclasses import dataclass
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -11,8 +13,15 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 import dotenv
 
+from driver_handler import create_driver
 from login import *
-
+@dataclass
+class MachineRequest:
+    building: str
+    roomNumber: str
+    machineType: str
+    machineNumber: str
+    problemDetail: str
 
 def main():
 
@@ -23,7 +32,12 @@ def main():
     return driver
 
 
-def make_request(driver, building, roomNumber, machineType, machineNumber, problemDetail):
+def api_request(machine_report: MachineRequest):
+    driver = create_driver()
+    make_request(driver, machine_report)
+
+
+def make_request(driver, machine_report: MachineRequest):
     driver.get("https://mylife.rit.edu")
     wait = WebDriverWait(driver, 150, poll_frequency=1)
     wait.until(ec.visibility_of_element_located((By.CLASS_NAME, "ui-btn-external-provider")))
@@ -45,7 +59,8 @@ def make_request(driver, building, roomNumber, machineType, machineNumber, probl
     category_select.select_by_visible_text("LAUNDRY ROOM")
     time.sleep(1)
     item_select.select_by_visible_text("washer")
-    description.send_keys(building + " Laundry (" + roomNumber + ") " + machineType + " " + machineNumber + ": " + problemDetail)
+
+    description.send_keys(machine_report.building + " Laundry (" + machine_report.roomNumber + ") " + machine_report.machineType + " " + machine_report.machineNumber + ": " + machine_report.problemDetail)
     input("Press Enter to continue...")
     input("Press Enter to continue...")
     input("Press Enter to continue...")
@@ -53,4 +68,4 @@ def make_request(driver, building, roomNumber, machineType, machineNumber, probl
 
 if __name__ == '__main__':
     driver = main()
-    make_request(driver, "Gleason", "35-A079", "Washer", "17", "It seems that this machine is not receiving power")
+    # make_request(driver, "Gleason", "35-A079", "Washer", "17", "It seems that this machine is not receiving power")
