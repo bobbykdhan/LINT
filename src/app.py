@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from machine_request import MachineRequest, api_request
+from machine_request import ReportInfo, api_request
 app = Flask(__name__)
 
 validBuildingNames = ["Gleason", "Sol", "Gibson", "Ellingson"]
@@ -19,7 +19,7 @@ async def ticket():
 
             if building in validBuildingNames:
                 if int(machineNum) < 40:
-                    report = MachineRequest(building, machineNum, issue)
+                    report = ReportInfo(building, machineNum, issue)
                     api_request(report)
 
             return "Thanks!", 200
