@@ -7,8 +7,8 @@ validBuildingNames = ["Gleason", "Sol", "Gibson", "Ellingson"]
 @app.route("/ticket", methods=["GET", "POST"])
 async def ticket():
     if request.method == "GET":
-        building = request.args.get('building')
-        machineNum = request.args.get('machineNum')
+        building = request.args.get('b')
+        machineNum = request.args.get('m')
 
         return render_template("ticket.html", building=building, machineNum=machineNum)
     else:
