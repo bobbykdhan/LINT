@@ -35,7 +35,12 @@ def main():
 
 def api_request(machine_report: ReportInfo):
     driver = create_driver()
-    make_request(driver, machine_report)
+    try:
+        make_request(driver, machine_report)
+    except Exception as exc:
+        print("An Error Has Occurred")
+        print(exc)
+        driver.quit()
 
 
 def make_request(driver, machine_report: ReportInfo):
