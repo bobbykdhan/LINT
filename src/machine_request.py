@@ -42,7 +42,7 @@ def api_request(machine_report: ReportInfo):
         driver.quit()
 
 
-def make_request(driver, machine_report: ReportInfo):
+def make_request(driver, machine_report: ReportInfo, debug=False):
     driver.get("https://mylife.rit.edu")
     wait = WebDriverWait(driver, 150, poll_frequency=1)
     wait.until(ec.visibility_of_element_located((By.CLASS_NAME, "ui-btn-external-provider")))
@@ -68,9 +68,12 @@ def make_request(driver, machine_report: ReportInfo):
 
     description.send_keys(machine_report.building + " Laundry, Machine" + machine_report.machineNumber + ": " + machine_report.problemDetail)
     time.sleep(5)
-    description.send_keys(Keys.ENTER)
-    time.sleep(5)
-    driver.quit()
+    if not debug:
+        description.send_keys(Keys.ENTER)
+        time.sleep(5)
+        driver.quit()
+    else:
+        time.sleep(5)
 
 
 if __name__ == '__main__':
