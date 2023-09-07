@@ -34,7 +34,7 @@ async def get_url(url_param):
     driver = create_driver()
     print("Driver Created")
     print("Submitting report for: debugging")
-    make_request(driver, ReportInfo(url_param, "-","-", True)
+    make_request(driver, ReportInfo(url_param, "-","-"), True)
     driver.quit()
     return f'The URL parameter is: {url_param}'
 
