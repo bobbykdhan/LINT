@@ -73,7 +73,7 @@ def make_request(driver, machine_report: ReportInfo, debug=False):
         time.sleep(5)
         driver.quit()
     else:
-        time.sleep(5)
+        time.sleep(25)
 
 
 if __name__ == '__main__':
