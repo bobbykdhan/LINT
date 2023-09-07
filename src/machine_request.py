@@ -32,6 +32,8 @@ def main():
 
 def api_request(machine_report: ReportInfo):
     driver = create_driver()
+    print("Driver Created")
+    print("Submitting report for: " + str(machine_report))
     try:
         make_request(driver, machine_report)
     except Exception as exc:
@@ -48,7 +50,8 @@ def make_request(driver, machine_report: ReportInfo):
     sign_in_button.click()
     time.sleep(2)
     sign_in(driver, True)
-    input("make whoever do duo")
+    print("make whoever do duo. Hanging for 10 seconds.")
+    time.sleep(10)
     # driver.get("https://mylife.rit.edu/StarRezPortalX/A74DA9CE/28/406/Maintenance-Maintenance?HadEmptyContext=True")
     # Not 100 percent sure that this link will always work so we might need to get the actual button
     driver.get(
