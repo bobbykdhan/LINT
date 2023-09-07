@@ -4,7 +4,7 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 
 
 
-def create_driver(url="http://selenium.lint.cs.house", firefox=False, screen_size=(1400, 1400)):
+def create_driver(url="http://selenium.lint.cs.house", firefox=True, screen_size=(1400, 1400)):
     if firefox:
         options = webdriver.FirefoxOptions()
     else:
