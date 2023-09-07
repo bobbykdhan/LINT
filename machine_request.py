@@ -61,10 +61,8 @@ def make_request(driver, machine_report: MachineRequest):
     item_select.select_by_visible_text("washer")
 
     description.send_keys(machine_report.building + " Laundry (" + machine_report.roomNumber + ") " + machine_report.machineType + " " + machine_report.machineNumber + ": " + machine_report.problemDetail)
-    input("Press Enter to continue...")
-    input("Press Enter to continue...")
-    input("Press Enter to continue...")
-    input("Press Enter to continue...")
+    time.sleep(5)
+    description.send_keys(Keys.ENTER)
 
 if __name__ == '__main__':
     driver = main()
