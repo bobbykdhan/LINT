@@ -30,8 +30,12 @@ async def ticket():
 
 
 @app.route('/debug/<path:url_param>')
-def get_url(url_param):
-    
+async def get_url(url_param):
+    driver = create_driver()
+    print("Driver Created")
+    print("Submitting report for: debugging")
+    make_request(driver, ReportInfo(url_param, "-","-")
+    driver.quit()
     return f'The URL parameter is: {url_param}'
 
 
