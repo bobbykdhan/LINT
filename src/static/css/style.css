@@ -63,7 +63,8 @@ padding: 20px 0;
 #header {
 padding: 2em 1em;
 font-size: 1.5em;
+align: center;
 background:
     linear-gradient(rgba(0,0,0,0) 50%, var(--bg) 100%),
-    repeat top/2.5em url('csh_tilted.png');
+    repeat top/2.5em url('../csh_tilted.png');
 }
