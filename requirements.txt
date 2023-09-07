@@ -19,6 +19,8 @@ outcome==1.2.0
 pycparser==2.21
 pydantic==2.3.0
 pydantic_core==2.6.3
+pyopt==0.84
+pyotp==2.9.0
 PySocks==1.7.1
 python-dotenv==1.0.0
 selenium==4.12.0
