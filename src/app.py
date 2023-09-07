@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template
+import machine_request
 app = Flask(__name__)
 
 validBuildingNames = ["Gleason", "Sol", "Gibson", "Ellingson"]
@@ -8,6 +9,11 @@ async def ticket():
     if request.method == "GET":
         building = request.args.get('building')
         machineNum = request.args.get('machineNum')
+
+        if building in validBuildingNames:
+            if int(machineNum) < 40:
+                machine_request.make_request()
+
         return render_template("ticket.html", building=building, machineNum=machineNum)
     else:
         try:

@@ -17,4 +17,4 @@ WORKDIR /app
 
 RUN pip3 install requests
 
-ENTRYPOINT ["python3", "main.py"]
+ENTRYPOINT ["python3", "src/app.py"]
