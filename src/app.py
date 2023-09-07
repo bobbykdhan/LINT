@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-import machine_request
+from machine_request import MachineRequest, api_request
 app = Flask(__name__)
 
 validBuildingNames = ["Gleason", "Sol", "Gibson", "Ellingson"]
@@ -10,13 +10,18 @@ async def ticket():
         building = request.args.get('building')
         machineNum = request.args.get('machineNum')
 
-        if building in validBuildingNames:
-            if int(machineNum) < 40:
-                machine_request.make_request()
-
         return render_template("ticket.html", building=building, machineNum=machineNum)
     else:
         try:
+            building = request.form.get('building')
+            machineNum = request.form.get('machineNum')
+            issue = request.form.get('issue')
+
+            if building in validBuildingNames:
+                if int(machineNum) < 40:
+                    report = MachineRequest(building, machineNum, issue)
+                    api_request(report)
+
             return "Thanks!", 200
         except ValueError as value_err:
             return str(value_err), 400

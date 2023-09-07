@@ -11,15 +11,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-import dotenv
 
 from driver_handler import create_driver
 from login import *
 @dataclass
 class MachineRequest:
     building: str
-    roomNumber: str
-    machineType: str
     machineNumber: str
     problemDetail: str
 
@@ -60,7 +57,7 @@ def make_request(driver, machine_report: MachineRequest):
     time.sleep(1)
     item_select.select_by_visible_text("washer")
 
-    description.send_keys(machine_report.building + " Laundry (" + machine_report.roomNumber + ") " + machine_report.machineType + " " + machine_report.machineNumber + ": " + machine_report.problemDetail)
+    description.send_keys(machine_report.building + " Laundry, Machine" + machine_report.machineNumber + ": " + machine_report.problemDetail)
     time.sleep(5)
     description.send_keys(Keys.ENTER)
     time.sleep(5)
