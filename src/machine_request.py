@@ -14,8 +14,9 @@ from selenium.webdriver.support import expected_conditions as ec
 
 from driver_handler import create_driver
 from login import *
+
 @dataclass
-class MachineRequest:
+class ReportInfo:
     building: str
     machineNumber: str
     problemDetail: str
@@ -29,12 +30,12 @@ def main():
     return driver
 
 
-def api_request(machine_report: MachineRequest):
+def api_request(machine_report: ReportInfo):
     driver = create_driver()
     make_request(driver, machine_report)
 
 
-def make_request(driver, machine_report: MachineRequest):
+def make_request(driver, machine_report: ReportInfo):
     driver.get("https://mylife.rit.edu")
     wait = WebDriverWait(driver, 150, poll_frequency=1)
     wait.until(ec.visibility_of_element_located((By.CLASS_NAME, "ui-btn-external-provider")))
