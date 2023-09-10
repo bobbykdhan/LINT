@@ -17,6 +17,7 @@ python3 ./src/app.py
 ## Frameworks used
 
 [Selenium](https://www.selenium.dev) - Used to automate the browser and send the commands.
+
 [Flask](https://flask.palletsprojects.com/en/2.3.x/) - Used for the front end of the service
 
 ## License
