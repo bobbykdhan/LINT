@@ -1,7 +1,6 @@
 # LINT
 
-Maintenance ticket service to help improve the laundry machines in dorms at Rochester Insitute of Technology. 
-Allows the user to seamlessly create and submit a ticket for the machine by scanning a qr code and filling out a short form.
+LINT is a user-friendly reporting system that allows RIT residents to submit maintaince claims in an efficient and timely manner.
 
 ## Installation
 
