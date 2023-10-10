@@ -41,7 +41,15 @@ async def get_url(url_param):
     driver.quit()
     return f'The URL parameter is: {url_param}'
 
-
+@app.route('/debug2/<path:url_param>')
+async def get_url(url_param):
+    driver = create_driver(url_param)
+    print("Driver Created")
+    print("Submitting report for: debugging")
+    driver.get("https://www.youtube.com")
+    time.sleep(10)
+    driver.quit()
+    return f'The URL parameter is: {url_param}'
 
 
 if __name__ == "__main__":
