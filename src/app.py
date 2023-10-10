@@ -42,7 +42,7 @@ async def get_url(url_param):
     return f'The URL parameter is: {url_param}'
 
 @app.route('/debug2/<path:url_param>')
-async def get_url(url_param):
+async def get_url2(url_param):
     driver = create_driver(url_param)
     print("Driver Created")
     print("Submitting report for: debugging")
